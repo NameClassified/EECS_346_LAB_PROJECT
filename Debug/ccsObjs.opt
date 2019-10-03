@@ -1,1 +1,1 @@
-"./CTS_HAL.obj" "./CTS_Layer.obj" "./main.obj" "./printf.obj" "./structure.obj" "./uart.obj" "../lnk_msp430fr5994.cmd" -llibmpu_init.a -llibmath.a -llibc.a 
+"./CTS_HAL.obj" "./CTS_Layer.obj" "./main.obj" "./msp430_spi.obj" "./msprf24.obj" "./printf.obj" "./structure.obj" "./uart.obj" "../lnk_msp430fr5994.cmd" -llibmpu_init.a -llibmath.a -llibc.a 

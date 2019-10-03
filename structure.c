@@ -52,6 +52,24 @@ const struct Element middle_element =
 {
 
     //.inputBits = CAPTIOPOSEL0 +CAPTIOPISEL2 + CAPTIOPISEL0,   // select 1.5
+    .inputBits = CAPTIOPOSEL1 + CAPTIOPOSEL0 + CAPTIOPISEL0,
+    /* When using an abstracted function to measure the element
+     * the 100*(maxResponse - threshold) < 0xFFFF
+     * ie maxResponse - threshold < 655
+     */
+
+    // RO_CSIO_TA2_WDTA  suggested threshold = 1000;
+    // RO_CSIO_TA2_TA3   suggested threshold = 1200;
+    // fRO_CSIO_TA2_TA3   suggested threshold = 480;
+
+    .maxResponse = 1000+655,
+    .threshold = 1000
+};
+
+const struct Element middle_element_2 =
+{
+
+    //.inputBits = CAPTIOPOSEL0 +CAPTIOPISEL2 + CAPTIOPISEL0,   // select 1.5
     .inputBits = CAPTIOPOSEL1 + CAPTIOPOSEL0 + CAPTIOPISEL1,
     /* When using an abstracted function to measure the element
      * the 100*(maxResponse - threshold) < 0xFFFF
@@ -66,57 +84,12 @@ const struct Element middle_element =
     .threshold = 1000
 };
 
-//// One Button Sensor
-//const struct Sensor slider_5 =
-//{
-//    /****** For RO_CSIO_TA2_WDTA **************/
-//    .halDefinition = RO_CSIO_TA2_WDTA,
-//    .inputCapsioctlRegister = (uint16_t *)&CAPSIO0CTL,
-//    .numElements = 1,
-//    .baseOffset = 0,
-//    // Pointer to elements
-//    .arrayPtr[0] = &middle_element,  		// point to middle element
-//    // Timer Information
-//    .measGateSource= GATE_WDTA_VLO,     //  Gate Clock Source
-//    .accumulationCycles= WDTA_GATE_64
-//};
-
-const struct Element middle_element_2 =
-{
-
-    //.inputBits = CAPTIOPOSEL0 +CAPTIOPISEL2 + CAPTIOPISEL0,   // select 1.5
-    .inputBits = CAPTIOPOSEL1 + CAPTIOPOSEL0 + CAPTIOPISEL0,
-    /* When using an abstracted function to measure the element
-     * the 100*(maxResponse - threshold) < 0xFFFF
-     * ie maxResponse - threshold < 655
-     */
-
-    // RO_CSIO_TA2_WDTA  suggested threshold = 1000;
-    // RO_CSIO_TA2_TA3   suggested threshold = 1200;
-    // fRO_CSIO_TA2_TA3   suggested threshold = 480;
-
-    .maxResponse = 1000+655,
-    .threshold = 1000
-};
-//const struct Sensor slider_3 =
-//{
-//    /****** For RO_CSIO_TA2_WDTA **************/
-//    .halDefinition = RO_CSIO_TA2_WDTA,
-//    .inputCapsioctlRegister = (uint16_t *)&CAPSIO0CTL,
-//    .numElements = 1,
-//    .baseOffset = 0,
-//    // Pointer to elements
-//    .arrayPtr[0] = &middle_element_2,         // point to middle element
-//    // Timer Information
-//    .measGateSource= GATE_WDTA_VLO,     //  Gate Clock Source
-//    .accumulationCycles= WDTA_GATE_64
-//};
 
 const struct Element middle_element_3 =
 {
 
     //.inputBits = CAPTIOPOSEL0 +CAPTIOPISEL2 + CAPTIOPISEL0,   // select 1.5
-   .inputBits = CAPTIOPOSEL0 + CAPTIOPISEL2 + CAPTIOPISEL0,
+   .inputBits = CAPTIOPOSEL1 + CAPTIOPOSEL0 + CAPTIOPISEL1 + CAPTIOPISEL0,
      //.inputBits = CAPTIOPOSEL1 + CAPTIOPOSEL0 + CAPTIOPISEL1 + CAPTIOPISEL0,
     /* When using an abstracted function to measure the element
      * the 100*(maxResponse - threshold) < 0xFFFF

@@ -1,9 +1,9 @@
 ******************************************************************************
                   MSP430 Linker Unix v18.12.1                  
 ******************************************************************************
->> Linked Wed Jun 12 18:43:28 2019
+>> Linked Wed Jun 12 18:56:29 2019
 
-OUTPUT FILE NAME:   <lab_project.out>
+OUTPUT FILE NAME:   <THANOS_GLOVE.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00004000
 
 

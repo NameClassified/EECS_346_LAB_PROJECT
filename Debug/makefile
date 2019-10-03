@@ -11,6 +11,8 @@ ORDERED_OBJS += \
 "./CTS_HAL.obj" \
 "./CTS_Layer.obj" \
 "./main.obj" \
+"./msp430_spi.obj" \
+"./msprf24.obj" \
 "./printf.obj" \
 "./structure.obj" \
 "./uart.obj" \
@@ -125,42 +127,42 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-lab_project.out \
+THANOS_GLOVE.out \
 
 EXE_OUTPUTS__QUOTED += \
-"lab_project.out" \
+"THANOS_GLOVE.out" \
 
 BIN_OUTPUTS += \
-lab_project.hex \
+THANOS_GLOVE.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"lab_project.hex" \
+"THANOS_GLOVE.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "lab_project.out"
+	@$(MAKE) --no-print-directory -Onone "THANOS_GLOVE.out"
 
 # Tool invocations
-lab_project.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+THANOS_GLOVE.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/bin/cl430" -vmspx --data_model=restricted -Ooff --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" --define=__MSP430FR5994__ --define=_MPU_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"lab_project.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/include" -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/lib/FR59xx" -i"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/lib" -i"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/include" --priority --reread_libs --define=_MPU_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="lab_project_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "lab_project.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/bin/cl430" -vmspx --data_model=restricted -Ooff --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" --define=__MSP430FR5994__ --define=_MPU_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"THANOS_GLOVE.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/include" -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"/Applications/ti/ccs900/ccs/ccs_base/msp430/lib/FR59xx" -i"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/lib" -i"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/include" --priority --reread_libs --define=_MPU_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="THANOS_GLOVE_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "THANOS_GLOVE.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-lab_project.hex: $(EXE_OUTPUTS)
+THANOS_GLOVE.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: MSP430 Hex Utility'
-	"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "lab_project.hex" $(EXE_OUTPUTS__QUOTED)
+	"/Applications/ti/ccs900/ccs/tools/compiler/ti-cgt-msp430_18.12.1.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "THANOS_GLOVE.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "CTS_HAL.obj" "CTS_Layer.obj" "main.obj" "printf.obj" "structure.obj" "uart.obj" 
-	-$(RM) "CTS_HAL.d" "CTS_Layer.d" "main.d" "printf.d" "structure.d" "uart.d" 
+	-$(RM) "CTS_HAL.obj" "CTS_Layer.obj" "main.obj" "msp430_spi.obj" "msprf24.obj" "printf.obj" "structure.obj" "uart.obj" 
+	-$(RM) "CTS_HAL.d" "CTS_Layer.d" "main.d" "msp430_spi.d" "msprf24.d" "printf.d" "structure.d" "uart.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
